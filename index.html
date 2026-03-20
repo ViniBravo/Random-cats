@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Gatinhos Aleatórios</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #f5f5f5;
+      font-family: Arial, sans-serif;
+    }
+    img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <img id="cat" src="" alt="Gatinho aleatório">
+
+  <script>
+    async function carregarGatinho() {
+      const resposta = await fetch('https://api.thecatapi.com/v1/images/search');
+      const dados = await resposta.json();
+      document.getElementById('cat').src = dados[0].url;
+    }
+
+    carregarGatinho();
+  </script>
+</body>
+</html>
